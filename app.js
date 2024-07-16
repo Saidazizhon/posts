@@ -1,5 +1,6 @@
 const API_URL = "https://jsonplaceholder.typicode.com"
 const wrapper = document.querySelector(".wrapper")
+const loader = document.querySelector(".loader")
 
 async function fetchUsers(api){
     let reponse = await fetch(`${api}/posts`)
@@ -8,6 +9,9 @@ async function fetchUsers(api){
         .json()
         .then((res)=> createCard(res))
         .catch((err)=> console.log(err))
+        .finally(()=> {
+            loader.style.display = "none"
+        })
 }
 
 
